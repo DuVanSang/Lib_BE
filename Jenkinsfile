@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.20'     // Tên Maven trong Jenkins Global Tools
+        maven 'Maven 3.9.10'     // Tên Maven trong Jenkins Global Tools
         jdk 'JDK 21'            // Tên JDK đã cài đặt trong Jenkins
     }
 
