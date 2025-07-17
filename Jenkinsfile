@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.9.10'    // Tên Maven đúng như bạn đã cấu hình trong Jenkins > Global Tool Configuration
+        maven 'maven-3.9.10'    // Tên Maven đúng như bạn đã cấu hình trong Jenkins > Global Tool Configuration
         jdk 'jdk 21'            // Tên JDK đúng như bạn đã cấu hình trong Jenkins
     }
 
