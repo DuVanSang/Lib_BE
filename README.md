@@ -7,7 +7,7 @@ Hệ- thống quản lý thư viện giúp đơn giản hóa việc quản lý s
 3. [Cấu trúc dự án](#cấu-trúc-dự-án)
 4. [Cài đặt](#cài-đặt)
 5. [Hướng dẫn sử dụng](#hướng-dẫn-sử-dụng)
-6. [Tài liệu tham khảo](#tài-liệu-tham-khảo)
+6. [Tài liệu tham khảo](#tài-tham-khảo)
 
 ---
 
