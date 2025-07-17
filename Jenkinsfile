@@ -7,8 +7,7 @@ pipeline {
     }
 
     environment {
-        APP_NAME = "product-manager"
-        JAR_FILE = "target/${APP_NAME}.jar"
+        JAR_FILE = "target/library-management-backend-0.0.1-SNAPSHOT.jar"
     }
 
     stages {
