@@ -1,9 +1,4 @@
-
-
-
-
-
-Dự án **Library Management System** được phát triển nhằm hỗ trợ quản lý sách và độc giả hiệu quả hơn thông qua giao diện hiện đại và hệ thống backend mạnh mẽ.
+nh mẽ.
 
 Frontend được xây dựng bằng **ReactJS**.  
 Backend được phát triển với **Java Spring Boot**.  

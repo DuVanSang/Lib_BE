@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven-3.9.10'    // Tên Maven đúng như bạn đã cấu hình trong Jenkins > Global Tool Configuration
-        jdk 'jdk 21'            // Tên JDK đúng như bạn đã cấu hình trong Jenkins
+        maven 'maven-3.9.10'
+        jdk 'jdk 21'
     }
 
     environment {
@@ -12,12 +12,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/DuVanSang/Lib_BE.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'mvn clean package -DskipTests'
