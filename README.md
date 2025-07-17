@@ -1,4 +1,4 @@
-# Library Management System
+
 
 Hệ thống quản lý thư viện giúp đơn giản hóa việc quản lý sách, độc giả, và các giao dịch mượn/trả sách.
 
