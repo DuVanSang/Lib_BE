@@ -1,13 +1,6 @@
 
 
 
-## Mục lục
-1. [Giới thiệu](#giới-thiệu)
-2. [Tính năng chính](#tính-năng-chính)
-3. [Cấu trúc dự án](#cấu-trúc-dự-án)
-4. [Cài đặt](#cài-đặt)
-5. [Hướng dẫn sử dụng](#hướng-dẫn-sử-dụng)
-6. [Tài liệu tham khảo](#tài-tham-khảo)
 
 ---
 
