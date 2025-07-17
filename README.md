@@ -1,5 +1,5 @@
 
-Hệ- thống quản lý thư viện giúp đơn giản hóa việc quản lý sách, độc giả, và các giao dịch mượn/trả sách.
+
 
 ## Mục lục
 1. [Giới thiệu](#giới-thiệu)
