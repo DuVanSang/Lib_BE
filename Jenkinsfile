@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.10'     // Tên Maven trong Jenkins Global Tools
-        jdk 'JDK 21'            // Tên JDK đã cài đặt trong Jenkins
+        maven 'Maven 3.9.10'    // Tên Maven đúng như bạn đã cấu hình trong Jenkins > Global Tool Configuration
+        jdk 'JDK 21'            // Tên JDK đúng như bạn đã cấu hình trong Jenkins
     }
 
     environment {
         APP_NAME = "product-manager"
-        
+        JAR_FILE = "target/${APP_NAME}.jar"
     }
 
     stages {
@@ -32,9 +32,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'echo Deploying ${JAR_FILE}...'
-                // Ví dụ deploy bằng java -jar
-                bat 'nohup java -jar ${JAR_FILE} &'
+                bat 'echo Deploying %JAR_FILE%...'
+                bat 'start /B java -jar %JAR_FILE%'
             }
         }
     }
