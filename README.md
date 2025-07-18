@@ -1,9 +1,5 @@
 
 
-Frontend được xây dựng bằng **ReactJS**.  
-Backend được phát triển với **Java Spring Boot**.  
-Cơ sở dữ liệu sử dụng **PostgreSQL** để lưu trữ thông tin.
-
 ---
 
 ## Tính năng chính
