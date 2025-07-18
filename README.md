@@ -2,15 +2,6 @@
 
 ---
 
-## Tính năng chính
-- Quản lý sách (thêm, sửa, xóa, tìm kiếm sách).
-- Quản lý độc giả và thông tin cá nhân.
-- Theo dõi lịch sử mượn/trả sách.
-- Thống kê sách đang mượn, sách quá hạn.
-- Quản lý tài khoản (Admin/Staff/User).
-
----
-
 ## Cấu trúc dự án
 Dự án được chia thành hai phần chính:
 1. **Frontend**
