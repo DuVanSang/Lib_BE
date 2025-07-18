@@ -1,10 +1,5 @@
 
 
----
-
-## Cấu trúc dự án
-Dự án được chia thành hai phần chính:
-1. **Frontend**
    - Repository: [Library Management Frontend](https://github.com/hnguyen04/library-management-frontend)
    - Công nghệ: ReactJS
 
