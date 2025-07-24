@@ -26,12 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat 'echo Deploying %JAR_FILE%...'
-                rem Chạy foreground, ghi log
-                start /B java -jar %JAR_FILE% > app.log 2>&1
-                rem Chờ app khởi động (15 giây)
-                timeout /T 15
-                rem Kiểm tra port 8081
-                powershell -Command "if ((Test-NetConnection -ComputerName localhost -Port 8081).TcpTestSucceeded) { Write-Host 'API is UP' } else { Write-Host 'API NOT RESPONDING'; exit 1 }"
+                bat 'start /B java -jar %JAR_FILE%'
             }
         }
     }
