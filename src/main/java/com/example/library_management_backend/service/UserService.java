@@ -106,12 +106,8 @@ public class UserService {
         return userResponse;
     }
 
-    public UserResponse getMyInfo() {
-        var context = SecurityContextHolder.getContext();
-        String name = context.getAuthentication().getName();
-
-        User user = userRepository.findByName(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
-
+    public UserResponse getMyInfo(String userName) {
+        User user = userRepository.findByName(userName).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
         UserResponse userResponse = userMapper.toUserResponse(user);
         userResponse.setRoleName(user.getRole().getName());
         userResponse.setRoleId(user.getRole().getId());
@@ -135,12 +131,8 @@ public class UserService {
         }
     }
 
-    public void changePassword(ChangePasswordRequest request) {
-        var context = SecurityContextHolder.getContext();
-        String name = context.getAuthentication().getName();
-
-        User user = userRepository.findByName(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
-
+    public void changePassword(String userName, ChangePasswordRequest request) {
+        User user = userRepository.findByName(userName).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
         if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
             throw new AppException(ErrorCode.WRONG_PASSWORD);
         }
@@ -148,11 +140,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public UserConfigurationResponse getAllConfigurations() {
-        var context = SecurityContextHolder.getContext();
-        String name = context.getAuthentication().getName();
-
-        User user = userRepository.findByName(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+    public UserConfigurationResponse getAllConfigurations(String userName) {
+        User user = userRepository.findByName(userName).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
         UserConfigurationResponse configResponse = new UserConfigurationResponse();
 
         List<Permission> allPermissionsList = permissionRepository.findAll();
@@ -162,7 +151,7 @@ public class UserService {
         Map<String, Boolean> allPermissions = allPermissionsList.stream()
                 .collect(Collectors.toMap(
                         Permission::getName,
-                        permission -> grantedPermissionsSet.contains(permission) // Nếu tồn tại trong granted thì là true
+                        permission -> true
                 ));
 
         Map<String, Boolean> grantedPermissions = grantedPermissionsSet.stream()
@@ -180,10 +169,8 @@ public class UserService {
         return configResponse;
     }
 
-    public void resetPassword(ResetPasswordRequest request) {
-        var context = SecurityContextHolder.getContext();
-        String name = context.getAuthentication().getName();
-        User admin = userRepository.findByName(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+    public void resetPassword(String adminUserName, ResetPasswordRequest request) {
+        User admin = userRepository.findByName(adminUserName).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
         if (!passwordEncoder.matches(request.getAdminPassword(), admin.getPassword())) {
             throw new AppException(ErrorCode.WRONG_PASSWORD);
         }

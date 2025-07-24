@@ -33,8 +33,7 @@ public class RoleService {
     PermissionRepository permissionRepository;
     RoleMapper roleMapper;
 
-    @PreAuthorize("hasRole('ADMIN')")
-    public RoleResponse createRole(RoleRequest request) {
+        public RoleResponse createRole(RoleRequest request) {
         Role role = roleMapper.toRole(request);
 
         var permissions = permissionRepository.findAllById(
@@ -53,8 +52,7 @@ public class RoleService {
         return roleMapper.toRoleResponse(role);
     }
 
-    @PreAuthorize("hasAuthority('Role.GetAll')")
-    public BaseGetAllResponse<RoleResponse> getAllRole() {
+        public BaseGetAllResponse<RoleResponse> getAllRole() {
         List<RoleResponse> roleList =  roleRepository.findAll()
                 .stream()
                 .map(roleMapper::toRoleResponse)
@@ -66,15 +64,13 @@ public class RoleService {
                 .build();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    public RoleResponse getRoleById(int id) {
+        public RoleResponse getRoleById(int id) {
         Role role = roleRepository.findById(String.valueOf(id)).orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_EXISTED));
         return roleMapper.toRoleResponse(role);
 
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    public RoleResponse updateRole(RoleUpdateRequest request) {
+        public RoleResponse updateRole(RoleUpdateRequest request) {
         Role role = roleRepository.findById(String.valueOf(request.getId())).orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_EXISTED));
         roleMapper.updateRole(role, request);
         var permissions = permissionRepository.findAllById(
@@ -88,14 +84,12 @@ public class RoleService {
         return roleMapper.toRoleResponse(role);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    public void deleteRole(int id) {
+        public void deleteRole(int id) {
         Role Role = roleRepository.findById(String.valueOf(id)).orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_EXISTED));
         roleRepository.delete(Role);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    public RoleResponse addPermissionstoRole(int roleId, List<Integer> permissionIds) {
+        public RoleResponse addPermissionstoRole(int roleId, List<Integer> permissionIds) {
         Role role = roleRepository.findById(String.valueOf(roleId)).orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_EXISTED));
         try {
             var permissions = permissionRepository.findAllById(
@@ -123,8 +117,7 @@ public class RoleService {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    public RoleResponse removePermissionFromRole(int roleId, int permissionId) {
+        public RoleResponse removePermissionFromRole(int roleId, int permissionId) {
         Role role = roleRepository.findById(String.valueOf(roleId)).orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_EXISTED));
         var permission = permissionRepository.findById(String.valueOf(permissionId)).orElseThrow(() -> new AppException(ErrorCode.PERMISSION_NOT_EXISTED));
         if (role.getPermissions().contains(permission)) {

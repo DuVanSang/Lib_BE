@@ -77,7 +77,7 @@ public class UserController {
     @GetMapping("/MyInfo")
     ApiResponse<UserResponse> getMyInfo() {
         return ApiResponse.<UserResponse>builder().
-                result(userService.getMyInfo()).
+                result(userService.getMyInfo(null)).
                 build();
     }
 
@@ -91,7 +91,7 @@ public class UserController {
 
     @PutMapping("/ChangePassword")
     ApiResponse<String> changePassword(@RequestBody ChangePasswordRequest request) {
-        userService.changePassword(request);
+        userService.changePassword(null, request);
         return ApiResponse.<String>builder().
                 result("Password changed successfully").
                 build();
@@ -100,13 +100,13 @@ public class UserController {
     @GetMapping("/GetAllConfigurations")
     ApiResponse<UserConfigurationResponse> getAllConfigurations() {
         return ApiResponse.<UserConfigurationResponse>builder().
-                result(userService.getAllConfigurations()).
+                result(userService.getAllConfigurations(null)).
                 build();
     }
 
     @PutMapping("/ResetPassword")
     ApiResponse<Void> resetPassword(@RequestBody ResetPasswordRequest request) {
-        userService.resetPassword(request);
+        userService.resetPassword(null, request);
         return ApiResponse.<Void>builder().build();
 
     }

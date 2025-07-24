@@ -28,31 +28,19 @@ public class SecurityConfig {
     private CustomJwtDecoder customJwtDecoder;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers(PUBLIC_ENDPOINTS)
-                .permitAll()
-                .anyRequest()
-                .authenticated());
-
-        httpSecurity.oauth2ResourceServer(oauth2 -> oauth2.jwt(jwtConfigurer -> jwtConfigurer
-                .decoder(customJwtDecoder)
-                    .jwtAuthenticationConverter(jwtAuthenticationConverter()))
-                .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
-
-
-        );
-        httpSecurity.cors(cors -> cors.configurationSource(request -> {
-            CorsConfiguration corsConfiguration = new CorsConfiguration();
-            corsConfiguration.addAllowedOriginPattern("*");
-            corsConfiguration.addAllowedMethod("*");
-            corsConfiguration.addAllowedHeader("*"); // Cho phép tất cả các header, bao gồm Authorization
-            corsConfiguration.setAllowCredentials(true);
-            return corsConfiguration;
-        })).csrf(AbstractHttpConfigurer::disable);
-
-        httpSecurity.csrf(AbstractHttpConfigurer::disable);
-        return httpSecurity.build();
-    }
+public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.authorizeHttpRequests(request -> request.anyRequest().permitAll());
+    httpSecurity.csrf(AbstractHttpConfigurer::disable);
+    httpSecurity.cors(cors -> cors.configurationSource(request -> {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOriginPattern("*");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.setAllowCredentials(true);
+        return corsConfiguration;
+    }));
+    return httpSecurity.build();
+}
 
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter() {
