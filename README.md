@@ -1,9 +1,4 @@
 
-## Cài đặt
-### Yêu cầu hệ thống:
-- **Node.js** (v18 trở lên)
-- **Java JDK** (17 trở lên)
-- **PostgreSQL** (15 trở lên)
 
 ### Cài đặt Frontend:
 1. Clone repository:
