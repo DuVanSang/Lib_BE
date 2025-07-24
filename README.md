@@ -1,9 +1,4 @@
 
-
-2. Cài đặt các gói phụ thuộc:
-   ```bash
-   yarn install
-   ```
 3. Tạo file `.env.local` và thêm đường dẫn backend (ví dụ):
    ```bash
    VITE_API_ENDPOINT=http://localhost:8080
