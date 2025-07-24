@@ -1,15 +1,4 @@
 
-
-   - Repository: [Library Management Frontend](https://github.com/hnguyen04/library-management-frontend)
-   - Công nghệ: ReactJS
-
-2. **Backend**
-   - Repository: [Library Management Backend](https://github.com/hnguyen04/library-management-backend)
-   - Công nghệ: Java Spring Boot
-   - Cơ sở dữ liệu: PostgreSQL
-
----
-
 ## Cài đặt
 ### Yêu cầu hệ thống:
 - **Node.js** (v18 trở lên)
