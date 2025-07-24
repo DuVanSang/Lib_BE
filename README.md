@@ -1,8 +1,4 @@
 
-1. Clone repository:
-   ```bash
-   git clone https://github.com/hnguyen04/library-management-frontend.git
-   cd library-management-frontend
 
 2. Cài đặt các gói phụ thuộc:
    ```bash
