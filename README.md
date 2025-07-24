@@ -1,6 +1,4 @@
 
-   ```
-Ứng dụng sẽ chạy tại: http://localhost:5173/
 
 ### Cài đặt Backend:
 1. Clone repository:
