@@ -1,8 +1,4 @@
-  
-2. Đăng nhập bằng tài khoản mẫu:  
-   - **Admin:**  
-     - **Username:** `admin`  
-     - **Password:** `admin`  
+
 3. Sử dụng các chức năng chính của hệ thống:  
    - **Quản lý sách:** Thêm, chỉnh sửa, xóa sách.
    - **Theo dõi độc giả:** Xem danh sách độc giả và lịch sử mượn sách.  
