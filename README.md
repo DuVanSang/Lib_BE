@@ -1,7 +1,4 @@
 
-
-### Cài đặt Backend:
-1. Clone repository:
    ```bash
    git clone https://github.com/hnguyen04/library-management-backend.git
    cd library-management-backend
