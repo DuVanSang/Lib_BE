@@ -1,6 +1,4 @@
 
-
-## Hướng dẫn sử dụng  
 1. Mở trình duyệt và truy cập [http://localhost:5173](http://localhost:5173).  
 2. Đăng nhập bằng tài khoản mẫu:  
    - **Admin:**  
