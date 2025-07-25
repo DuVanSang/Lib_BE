@@ -1,8 +1,4 @@
 
-  - Dẫn đến thư mục dự án library-management-backend và mở.
-  - Trong IntelliJ, tìm file LibraryBackendManagementApplication.java trong thư mục src/main/java.
-  - Nhấn chuột phải và chọn Run 'LibraryBackendManagementApplication'.
-  - Backend sẽ chạy tại: http://localhost:8080.
 
 ## Hướng dẫn sử dụng  
 1. Mở trình duyệt và truy cập [http://localhost:5173](http://localhost:5173).  
