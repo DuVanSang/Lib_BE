@@ -1,7 +1,4 @@
 
-   ```bash
-   git clone https://github.com/hnguyen04/library-management-backend.git
-   cd library-management-backend
 2. Chạy ứng dụng (recommend chạy trên IntelliJ IDEA)
   - Mở IntelliJ, chọn File > Open.
   - Dẫn đến thư mục dự án library-management-backend và mở.
