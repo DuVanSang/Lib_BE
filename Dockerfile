@@ -1,17 +1,21 @@
-# Sử dụng image Java 17
 FROM eclipse-temurin:17-jdk
 
-# Thư mục làm việc trong container
 WORKDIR /app
 
-# Copy toàn bộ mã nguồn
-COPY . .
+# Copy file cấu hình Maven trước để tận dụng cache
+COPY pom.xml .
+COPY mvnw .
+COPY .mvn .mvn
 
-# Biên dịch ứng dụng
+# Download dependencies (cache bước này nếu code không đổi)
+RUN ./mvnw dependency:go-offline
+
+# Copy source code vào (chỉ copy src để tránh rebuild khi file ngoài src đổi)
+COPY src ./src
+
+# Build ứng dụng
 RUN ./mvnw clean package -DskipTests
 
-# Mở cổng 8081 cho ứng dụng
 EXPOSE 8081
 
-# Chạy ứng dụng từ file JAR đã build
 CMD ["java", "-jar", "target/library-management-backend-0.0.1-SNAPSHOT.jar"]
