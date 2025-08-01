@@ -7,26 +7,43 @@ pipeline {
     }
 
     environment {
-        JAR_FILE = "target/library-management-backend-0.0.1-SNAPSHOT.jar"
+        IMAGE_NAME = "duvansang/library-management-backend"
+        IMAGE_TAG = "latest"
+        DOCKERHUB_CREDENTIALS = 'dockerhub-credentials' // Đảm bảo đúng ID credentials đã tạo
     }
 
     stages {
-        stage('Build') {
+        stage('Build JAR') {
             steps {
                 bat 'mvn clean package -DskipTests'
             }
         }
 
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                bat 'mvn test'
+                script {
+                    bat "docker build -t %IMAGE_NAME%:%IMAGE_TAG% ."
+                }
             }
         }
 
-        stage('Deploy') {
+        stage('Push Docker Image') {
             steps {
-                bat 'echo Deploying %JAR_FILE%...'
-                bat 'start /B java -jar %JAR_FILE%'
+                script {
+                    withCredentials([usernamePassword(credentialsId: env.DOCKERHUB_CREDENTIALS, usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+                        bat "docker login -u %DOCKERHUB_USER% -p %DOCKERHUB_PASS%"
+                        bat "docker push %IMAGE_NAME%:%IMAGE_TAG%"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                script {
+                    bat "docker rm -f library-backend || exit 0"
+                    bat "docker run -d -p 8081:8081 --name library-backend %IMAGE_NAME%:%IMAGE_TAG%"
+                }
             }
         }
     }
