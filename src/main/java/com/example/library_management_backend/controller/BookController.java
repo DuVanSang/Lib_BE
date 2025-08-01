@@ -30,7 +30,7 @@ public class BookController {
                 .build();
     }
 
-    @GetMapping("/GetAllllll")
+    @GetMapping("/GetAll")
     ApiResponse<BaseGetAllResponse<BookResponse>> getAllBooks(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "publisherId", required = false) Integer publisherId,
