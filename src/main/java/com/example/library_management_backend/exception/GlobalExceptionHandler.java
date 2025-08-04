@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
-@ControllerAdvice
+@ControllerAdvice(basePackages = "com.example.library_management_backend.controller")
 @Slf4j
 public class GlobalExceptionHandler {
 

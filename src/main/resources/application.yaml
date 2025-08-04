@@ -42,3 +42,12 @@ jwt:
   refreshable-duration: 36000
 
 debug: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
