@@ -5,7 +5,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=library_db;encrypt=true;trustServerCertificate=true
+    url: jdbc:sqlserver://host.docker.internal:1433;databaseName=library_db;encrypt=true;trustServerCertificate=true
     username: sa
     password: 1234567890
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -35,9 +35,3 @@ jwt:
   refreshable-duration: 36000
 
 debug: true
-
-minio:
-  endpoint: http://localhost:9000
-  access-key: minioadmin
-  secret-key: minioadmin
-  bucket: mybucket

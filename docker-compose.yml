@@ -12,16 +12,5 @@ services:
     command: server /data --console-address ":9001"
     volumes:
       - minio_data:/data
-
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: sqlserver
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=1234567890
-    ports:
-      - "1433:1433"
-    restart: unless-stopped
-
 volumes:
   minio_data:
