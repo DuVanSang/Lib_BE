@@ -18,7 +18,14 @@ spring:
       allow-credentials: true
 
   application:
-    name: library-management    
+    name: library-management
+
+minio:
+  url: http://localhost:9000
+  access-key: minio
+  secret-key: minio123
+  bucket: library-files
+
 
   jackson:
     time-zone: Asia/Bangkok
