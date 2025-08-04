@@ -23,5 +23,15 @@ services:
       - "1433:1433"
     restart: unless-stopped
 
+  backend:
+    image: duvansang/library-management-backend:latest
+    container_name: library-backend
+    ports:
+      - "8081:8081"
+    depends_on:
+      - sqlserver
+      - minio
+    restart: unless-stopped
+
 volumes:
   minio_data:
