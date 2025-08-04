@@ -18,26 +18,9 @@ services:
     container_name: sqlserver
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Aa12345678!
+      - SA_PASSWORD=1234567890
     ports:
       - "1433:1433"
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pgrep sqlservr || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-
-  backend:
-    image: duvansang/library-management-backend:latest
-    container_name: library-backend
-    ports:
-      - "8081:8081"
-    depends_on:
-      sqlserver:
-        condition: service_healthy
-      minio:
-        condition: service_started
     restart: unless-stopped
 
 volumes:
