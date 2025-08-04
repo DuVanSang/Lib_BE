@@ -28,7 +28,8 @@ public class MinioService {
                 minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
             }
         } catch (Exception e) {
-            throw new RuntimeException("Could not initialize MinIO bucket: " + e.getMessage(), e);
+            System.err.println("[MinioService] Warning: Could not initialize MinIO bucket: " + e.getMessage());
+            // Không throw exception để backend vẫn start được
         }
     }
 
