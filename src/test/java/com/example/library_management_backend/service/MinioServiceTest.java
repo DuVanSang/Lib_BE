@@ -27,7 +27,7 @@ class MinioServiceTest {
     }
 
     @Test
-    void testUploadFile_NullFileName() {
+    void testUploadFile_NullFileName() throws Exception {
         MultipartFile file = mock(MultipartFile.class);
         when(file.getOriginalFilename()).thenReturn(null);
         when(file.getInputStream()).thenReturn(new ByteArrayInputStream(new byte[]{}));
@@ -38,7 +38,7 @@ class MinioServiceTest {
     }
 
     @Test
-    void testDownloadFile_NotFound() {
+    void testDownloadFile_NotFound() throws Exception {
         String filename = "notfound.txt";
         // Giả lập lỗi khi gọi minioClient.getObject
         try {

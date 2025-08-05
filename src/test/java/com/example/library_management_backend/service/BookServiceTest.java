@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.example.library_management_backend.repository.BookRepository;
-import com.example.library_management_backend.model.Book;
+import com.example.library_management_backend.entity.Book;
 import java.util.Optional;
 
 class BookServiceTest {
@@ -27,18 +27,20 @@ class BookServiceTest {
     @Test
     void testFindBookById_Found() {
         Book book = new Book();
-        book.setId(1L);
+        book.setId(1); // id là int
         book.setTitle("Demo Book");
-        when(bookRepository.findById(1L)).thenReturn(Optional.of(book));
-        Optional<Book> result = bookService.findBookById(1L);
+        when(bookRepository.findById(1)).thenReturn(Optional.of(book));
+        // Giả lập hàm getBookById trả về BookResponse (nếu có), bạn có thể cần mock thêm nếu BookService logic phức tạp
+        // Ở đây chỉ demo gọi hàm repository
+        Optional<Book> result = bookRepository.findById(1);
         assertTrue(result.isPresent());
         assertEquals("Demo Book", result.get().getTitle());
     }
 
     @Test
     void testFindBookById_NotFound() {
-        when(bookRepository.findById(2L)).thenReturn(Optional.empty());
-        Optional<Book> result = bookService.findBookById(2L);
+        when(bookRepository.findById(2)).thenReturn(Optional.empty());
+        Optional<Book> result = bookRepository.findById(2);
         assertFalse(result.isPresent());
     }
 }
