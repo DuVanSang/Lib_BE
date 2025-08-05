@@ -47,3 +47,4 @@ services:
 volumes:
   minio_data:
   grafana_data:
+  

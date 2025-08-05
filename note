@@ -1,6 +1,8 @@
 sssss# 1. Dừng toàn bộ container cũ (nếu cần)
+
 docker-compose down
 
+docker rm library-backend
 # 2. Xóa volume MinIO (nếu muốn reset credentials hoặc data)
 docker volume rm backend__minio_data
 
@@ -29,3 +31,7 @@ kubectl logs <pod-name>
 # MinIO:     http://localhost:9001
 # Prometheus: http://localhost:9090
 # Grafana:   http://localhost:3000
+
+
+minikube service prometheus
+>> minikube service grafana   //khởi động cổng grafana và prometheus qua k8s
