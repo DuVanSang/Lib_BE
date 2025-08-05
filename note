@@ -1,1 +1,31 @@
-sss
+sssss# 1. Dừng toàn bộ container cũ (nếu cần)
+docker-compose down
+
+# 2. Xóa volume MinIO (nếu muốn reset credentials hoặc data)
+docker volume rm backend__minio_data
+
+# 3. Build lại image backend (nếu có thay đổi code)
+docker-compose build backend
+
+# 4. Khởi động lại toàn bộ hệ thống
+docker-compose up -d
+
+# 5. Kiểm tra trạng thái các container
+docker-compose ps
+
+# 6. Xem log backend hoặc service khác
+docker-compose logs -f backend
+
+# 7. Kiểm tra image trên Docker Hub (nếu dùng CI/CD)
+docker pull <your_dockerhub_username>/library-backend:latest
+
+# 8. Với Kubernetes (nếu dùng)
+kubectl apply -f <deployment-file>.yaml
+kubectl get pods
+kubectl logs <pod-name>
+
+# 9. Truy cập các service:
+# Backend:   http://localhost:8081
+# MinIO:     http://localhost:9001
+# Prometheus: http://localhost:9090
+# Grafana:   http://localhost:3000

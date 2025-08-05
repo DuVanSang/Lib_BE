@@ -1,5 +1,16 @@
 version: '3.8'
 services:
+  backend:
+    image: library-backend
+    container_name: library-backend
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    depends_on:
+      - minio
+    restart: unless-stopped
+
   minio:
     image: minio/minio
     container_name: minio
@@ -7,8 +18,8 @@ services:
       - "9000:9000"
       - "9001:9001"
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
     command: server /data --console-address ":9001"
     volumes:
       - minio_data:/data
