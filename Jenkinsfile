@@ -63,6 +63,14 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') { // 'SonarQube' là tên cấu hình server trong Jenkins
+                    bat "mvn sonar:sonar -Dsonar.projectKey=library-management-backend -Dsonar.host.url=http://localhost:9002"
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
