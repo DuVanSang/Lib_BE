@@ -60,13 +60,12 @@ public class BookController {
     }
 
     @DeleteMapping("/Delete")
-ApiResponse<String> deleteBook(@RequestParam int id) {
-    bookService.deleteBook(id);
-    return ApiResponse.<String>builder()
-            .result("✅ Book deleted successfully via CI/CD update")  // <-- Thay đổi rõ ràng
-            .build();
-}
-
+    ApiResponse<String> deleteBook(@RequestParam int id) {
+        bookService.deleteBook(id);
+        return ApiResponse.<String>builder()
+                .result("Book deleted successfullysssss")
+                .build();
+    }
 
     @PutMapping("/Update")
     ApiResponse<BookResponse> updateBook(@RequestBody BookUpdateRequest request) {
