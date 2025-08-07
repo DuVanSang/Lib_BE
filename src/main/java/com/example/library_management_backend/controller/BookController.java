@@ -30,7 +30,7 @@ public class BookController {
                 .build();
     }
 
-    @GetMapping("/GetAlllllll")
+    @GetMapping("/GetAll")
     ApiResponse<BaseGetAllResponse<BookResponse>> getAllBooks(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "publisherId", required = false) Integer publisherId,
@@ -60,12 +60,13 @@ public class BookController {
     }
 
     @DeleteMapping("/Delete")
-    ApiResponse<String> deleteBook(@RequestParam int id) {
-        bookService.deleteBook(id);
-        return ApiResponse.<String>builder()
-                .result("Book deleted successfully")
-                .build();
-    }
+ApiResponse<String> deleteBook(@RequestParam int id) {
+    bookService.deleteBook(id);
+    return ApiResponse.<String>builder()
+            .result("✅ Book deleted successfully via CI/CD update")  // <-- Thay đổi rõ ràng
+            .build();
+}
+
 
     @PutMapping("/Update")
     ApiResponse<BookResponse> updateBook(@RequestBody BookUpdateRequest request) {
