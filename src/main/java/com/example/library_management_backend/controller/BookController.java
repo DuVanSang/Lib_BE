@@ -63,7 +63,7 @@ public class BookController {
     ApiResponse<String> deleteBook(@RequestParam int id) {
         bookService.deleteBook(id);
         return ApiResponse.<String>builder()
-                .result("Book deleted successfullysssss")
+                .result("Book deleted super successfully")
                 .build();
     }
 
